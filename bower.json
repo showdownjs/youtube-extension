@@ -1,0 +1,35 @@
+{
+  "name": "showdown-youtube",
+  "description": "Embed YouTube videos within showdown",
+  "homepage": "https://github.com/showdownjs/youtube-extension",
+  "license": "BSD-2-Clause",
+  "authors": [
+    "Estevão Soares dos Santos (https://github.com/tivie)",
+    "Pascal Deschênes (https://github.com/pdeschen)"
+  ],
+  "keywords": [
+    "markdown",
+    "showdown",
+    "showdown extension",
+    "prettify"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/showdownjs/youtube-extension.git",
+    "web": "https://github.com/showdownjs/youtube-extension"
+  },
+  "main": ["dist/showdown-youtube.js"],
+  "dependencies": {
+    "showdown": "1.0.x"
+  },
+  "ignore": [
+    "src/",
+    "test/",
+    ".editorconfig",
+    ".gitignore",
+    ".jscs.json",
+    ".jshintrc",
+    ".travis.yml",
+    "Gruntfile.js"
+  ]
+}
