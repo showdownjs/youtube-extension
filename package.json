@@ -22,10 +22,8 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {
-    "showdown": "1.0.x"
-  },
   "devDependencies": {
+    "showdown": "1.1.0",
     "chai": "^2.3.0",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
