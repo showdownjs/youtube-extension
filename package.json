@@ -1,6 +1,6 @@
 {
   "name": "showdown-youtube",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Embed YouTube videos within showdown",
   "keywords": [
     "markdown",

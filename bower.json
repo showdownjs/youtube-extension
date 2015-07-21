@@ -19,9 +19,6 @@
     "web": "https://github.com/showdownjs/youtube-extension"
   },
   "main": ["dist/showdown-youtube.js"],
-  "dependencies": {
-    "showdown": "1.0.x"
-  },
   "ignore": [
     "src/",
     "test/",
