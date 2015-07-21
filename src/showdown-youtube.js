@@ -93,7 +93,6 @@
             var d = parseDimensions(rest),
                 m;
             if ((m = shortLinkRegex.exec(url)) || (m = fullLinkRegex.exec(url))) {
-              console.log(m[1]);
               return tag.replace(/%1/g, m[1]).replace('%2', d.width).replace('%3', d.height);
             } else {
               return match;
