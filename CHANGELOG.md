@@ -3,8 +3,14 @@
 
 #### Release information
 
-This is the first release of youtube extension. Only compatible with showdown v1.0.x
+Release of youtube extension compatible with showdown ^1.0.0
 
 #### Compatibility
 
-**Compatible with showdown v.1.0.x**
+**Compatible with showdown v.1.x.x**
+
+#### Features
+
+* **video size**: enables setting video size using image dimensions syntax.
+* **smooth live preview**: enables smooth preview in live editors by replacing the iframe with an image. This option
+    should be disabled when parsing the final document.
