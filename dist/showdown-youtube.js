@@ -66,13 +66,12 @@
         filter: function (text, converter, options) {
           var tag = iframe;
           if (options.smoothLivePreview) {
-            tag = (options.youtubeUseImg) ? img : svg;
+            tag = (options.youtubeUseSimpleImg) ? img : svg;
           }
           return text.replace(imgRegex, function (match, url, rest) {
             var d = parseDimensions(rest),
                 m;
             if ((m = shortLinkRegex.exec(url)) || (m = fullLinkRegex.exec(url))) {
-              console.log(m[1]);
               return tag.replace(/%1/g, m[1]).replace('%2', d.width).replace('%3', d.height);
             } else {
               return match;
