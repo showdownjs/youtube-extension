@@ -87,7 +87,7 @@
         filter: function (text, converter, options) {
           var tag = iframe;
           if (options.smoothLivePreview) {
-            tag = (options.youtubeUseImg) ? img : svg;
+            tag = (options.youtubeUseSimpleImg) ? img : svg;
           }
           return text.replace(imgRegex, function (match, url, rest) {
             var d = parseDimensions(rest),
