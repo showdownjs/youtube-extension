@@ -47,10 +47,9 @@
       '</div>',
     iframe = '<iframe width="%2" height="%3" src="//www.youtube.com/embed/%1?rel=0" frameborder="0" allowfullscreen></iframe>',
     img = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" width="%2" height="%3">',
-    inRegex = /!\[.*?]\s?\([ \t]*<?(\S+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:['"](.*?)['"][ \t]*)?\)/g,
     imgRegex = /(?:<p>)?<img.*?src="(.+?)"(.*?)\/?>(?:<\/p>)?/gi,
-    fullLinkRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?youtube\.(?:.+?)\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9_-]{11})/gi,
-    shortLinkRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/gi;
+    fullLinkRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?youtube\.(?:.+?)\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9_-]{11})/i,
+    shortLinkRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/i;
 
   function parseDimensions(rest) {
     var width,
@@ -76,83 +75,29 @@
     };
   }
 
-  function replaceInTag(otp, match, url, width, height) {
-    var m;
-    if ((m = shortLinkRegex.exec(url)) || (m = fullLinkRegex.exec(url))) {
-      return otp.replace(/%1/g, m[1]).replace('%2', width).replace('%3', height);
-    } else {
-      return match;
-    }
-  }
-
   /**
    * Replace with video iframes
    */
   showdown.extension('youtube', function () {
     return [
-      // Inline style
-      {
-        type: 'lang',
-        regex: inRegex,
-        replace: function (match, url, width, height) {
-          width = width || '420';
-          height = height || '315';
-
-          if (/^\d+$/gm.exec(width)) {
-            width += 'px';
-          }
-          if (/^\d+$/gm.exec(height)) {
-            height += 'px';
-          }
-
-          return replaceInTag(iframe, match, url, width, height);
-        }
-      },
       {
         // It's a bit hackish but we let the core parsers replace the reference image for an image tag
         // then we replace the full img tag in the output with our iframe
         type: 'output',
-        regex: imgRegex,
-        replace: function (match, url, rest) {
-          var d = parseDimensions(rest);
-          return replaceInTag(iframe, match, url, d.width, d.height);
-        }
-      }
-    ];
-  });
-
-  /**
-   * Replace with image placeholder. Use to provide a more smooth experience
-   * in live editors
-   */
-  showdown.extension('youtube-preview', function () {
-    return [
-      // Inline style
-      {
-        type: 'lang',
-        filter: function(text, converter, options) {
-          var tag = (options.youtubeUseImg) ? img : svg;
-          return text.replace(inRegex, function (match, url, width, height) {
-            width = width || '420';
-            height = height || '315';
-
-            if (/^\d+$/gm.exec(width)) {
-              width += 'px';
-            }
-            if (/^\d+$/gm.exec(height)) {
-              height += 'px';
-            }
-            return replaceInTag(tag, match, url, width, height);
-          });
-        }
-      },
-      {
-        type: 'output',
         filter: function (text, converter, options) {
-          var tag = (options.youtubeUseImg) ? img : svg;
+          var tag = iframe;
+          if (options.smoothLivePreview) {
+            tag = (options.youtubeUseImg) ? img : svg;
+          }
           return text.replace(imgRegex, function (match, url, rest) {
-            var d = parseDimensions(rest);
-            return replaceInTag(tag, match, url, d.width, d.height);
+            var d = parseDimensions(rest),
+                m;
+            if ((m = shortLinkRegex.exec(url)) || (m = fullLinkRegex.exec(url))) {
+              console.log(m[1]);
+              return tag.replace(/%1/g, m[1]).replace('%2', d.width).replace('%3', d.height);
+            } else {
+              return match;
+            }
           });
         }
       }
