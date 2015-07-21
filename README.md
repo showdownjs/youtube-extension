@@ -55,6 +55,32 @@ This should output the equivalent to:
 <iframe src="//www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0" allowfullscreen></iframe>
 ```
 
+## Options
+
+Youtube extension reads the options from Showdown Core. So, to pass an option, use the methods explained in
+[Showdown's documentation](https://github.com/showdownjs/showdown#setting-options).
+
+
+### smoothLivePreview
+
+(borrowed from Showdown core)
+
+When using the extension in live editors (for instance, with angularjs), every time the text is changed, a new iframe is created.
+This leads to a lot of requests done to youtube, which translates as an overall feel of sluggishness.
+Turning **smoothLivePreview** on replaces the actual video objects (iframes) with an image placeholder. This way the live editing
+feels more smooth.
+ 
+This should only be enabled during live preview and not on the final document.
+
+
+### youtubeUseSimpleImg
+Only used if smoothLivePreview is on.
+
+Uses a simple black image preview instead of an svg. This is quicker and ensures max compatibility with older browsers.
+
+Default is false
+
+
 ## License
 These files are distributed under BSD license. For more information, 
 please check the [LICENSE file](https://github.com/showdownjs/youtube-extension/blob/master/LICENSE) in the source code.
