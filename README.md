@@ -55,6 +55,30 @@ This should output the equivalent to:
 <iframe src="//www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0" allowfullscreen></iframe>
 ```
 
+## Video size
+
+Since youtube extension uses the image syntax for videos, you can set the video dimensions the same way.
+
+```md
+![youtube video](http://www.youtube.com/watch?v=dQw4w9WgXcQ =800x600)
+```
+
+This should output the equivalent to:
+
+```html
+<iframe width="800px" height="600px" src="//www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0" allowfullscreen></iframe>
+```
+
+You can also use units:
+ 
+```md
+![foo](youtu.be/dQw4w9WgXcQ =100x80)     simple, assumes units are in px
+![bar](youtu.be/dQw4w9WgXcQ =100x*)      sets the height to "auto"
+![baz](youtu.be/dQw4w9WgXcQ =80%x5em)   width of 80% and height of 5em
+```
+
+
+
 ## Options
 
 Youtube extension reads the options from Showdown Core. So, to pass an option, use the methods explained in
