@@ -12,7 +12,7 @@
 (function (extension) {
   'use strict';
 
-  if (showdown) {
+  if (typeof showdown !== 'undefined') {
     // global (browser or nodejs global)
     extension(showdown);
   } else if (typeof define === 'function' && define.amd) {
