@@ -2,7 +2,7 @@
   'use strict';
 
   require('chai').should();
-  global.showdown = require('showdown');
+  var showdown = require('showdown');
   require('../src/showdown-youtube.js');
 
   var fs = require('fs'),

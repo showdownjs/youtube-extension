@@ -40,6 +40,14 @@ After including the extension in your application, you just need to enable it in
 
     var converter = new showdown.Converter({extensions: ['youtube']});
 
+When using in node, ensure to first require the extension so it can register itself with showdown before any converters try to use it.
+
+```javascript
+var showdown = require('showdown');
+require('showdown-youtube');
+var converter = new showdown.Converter({extensions: ['youtube']});
+```
+
 ## Example
 
 ```javascript
@@ -70,7 +78,7 @@ This should output the equivalent to:
 ```
 
 You can also use units:
- 
+
 ```md
 ![foo](youtu.be/dQw4w9WgXcQ =100x80)     simple, assumes units are in px
 ![bar](youtu.be/dQw4w9WgXcQ =100x*)      sets the height to "auto"
@@ -93,7 +101,7 @@ When using the extension in live editors (for instance, with angularjs), every t
 This leads to a lot of requests done to youtube, which translates as an overall feel of sluggishness.
 Turning **smoothLivePreview** on replaces the actual video objects (iframes) with an image placeholder. This way the live editing
 feels more smooth.
- 
+
 This should only be enabled during live preview and not on the final document.
 
 
@@ -106,5 +114,5 @@ Default is false
 
 
 ## License
-These files are distributed under BSD license. For more information, 
+These files are distributed under BSD license. For more information,
 please check the [LICENSE file](https://github.com/showdownjs/youtube-extension/blob/master/LICENSE) in the source code.

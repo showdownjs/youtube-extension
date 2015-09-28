@@ -1,8 +1,8 @@
-/*! showdown-youtube 21-07-2015 */
+/*! showdown-youtube 27-09-2015 */
 (function (extension) {
   'use strict';
 
-  if (showdown) {
+  if (typeof showdown !== 'undefined') {
     extension(showdown);
   } else if (typeof define === 'function' && define.amd) {
     define(['showdown'], extension);
