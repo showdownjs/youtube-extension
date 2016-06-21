@@ -1,4 +1,4 @@
-/*! showdown-youtube 27-09-2015 */
+/*! showdown-youtube 21-06-2016 */
 (function (extension) {
   'use strict';
 
@@ -20,7 +20,7 @@
       '     width="100" height="70" viewBox="0 0 100 70"' +
       '     style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">' +
       '    <defs>' +
-      '      <linearGradient id="grad1" x1="0%" x2="0%" y1="0%" x2="0%" y2="100%">' +
+      '      <linearGradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">' +
       '        <stop offset="0%" style="stop-color:rgb(229,45,49);stop-opacity:1" />' +
       '        <stop offset="100%" style="stop-color:rgb(191,23,29);stop-opacity:1" />' +
       '      </linearGradient>' +
@@ -29,13 +29,14 @@
       '    <polygon points="35,20 70,35 35,50" fill="#fff"/>' +
       '    <polygon points="35,20 70,35 64,37 35,21" fill="#e8e0e0"/>' +
       '</svg>' +
-      '<div style="text-align:center; padding-top:10px; color:#fff"><a href="//youtu.be/%1">youtu.be/%1</a></div>' +
+      '<div style="text-align:center; padding-top:10px; color:#fff"><a href="%1">%1</a></div>' +
       '</div>',
-    iframe = '<iframe width="%2" height="%3" src="//www.youtube.com/embed/%1?rel=0" frameborder="0" allowfullscreen></iframe>',
     img = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" width="%2" height="%3">',
+    iframe = '<iframe src="%1" width="%2" height="%3" frameborder="0" allowfullscreen></iframe>',
     imgRegex = /(?:<p>)?<img.*?src="(.+?)"(.*?)\/?>(?:<\/p>)?/gi,
-    fullLinkRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?youtube\.(?:.+?)\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9_-]{11})/i,
-    shortLinkRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/i;
+    fullYoutubeRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?youtube\.(?:.+?)\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9_-]{11})/i,
+    shortYoutubeRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/i,
+    vimeoRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?vimeo.com\/(\d+)/;
 
   function parseDimensions(rest) {
     var width,
@@ -70,12 +71,15 @@
           }
           return text.replace(imgRegex, function (match, url, rest) {
             var d = parseDimensions(rest),
-                m;
-            if ((m = shortLinkRegex.exec(url)) || (m = fullLinkRegex.exec(url))) {
-              return tag.replace(/%1/g, m[1]).replace('%2', d.width).replace('%3', d.height);
+              m, fUrl = '';
+            if ((m = shortYoutubeRegex.exec(url)) || (m = fullYoutubeRegex.exec(url))) {
+              fUrl = '//www.youtube.com/embed/' + m[1] + '?rel=0';
+            } else if ((m = vimeoRegex.exec(url))) {
+              fUrl = '//player.vimeo.com/video/' + m[1];
             } else {
               return match;
             }
+            return tag.replace(/%1/g, fUrl).replace('%2', d.width).replace('%3', d.height);
           });
         }
       }

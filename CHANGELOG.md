@@ -1,3 +1,10 @@
+<a name"1.1.0"></a>
+## 1.1.0 (2016-06-21)
+
+#### Features
+* **vimeo:** Add vimeo support
+
+
 <a name"1.0.0"></a>
 ## 1.0.0 (2015-07-21)
 

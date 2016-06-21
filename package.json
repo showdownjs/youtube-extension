@@ -1,6 +1,6 @@
 {
   "name": "showdown-youtube",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Embed YouTube videos within showdown",
   "keywords": [
     "markdown",
@@ -8,7 +8,7 @@
     "showdown extension",
     "youtube"
   ],
-  "author": "Estev„o Soares dos Santos",
+  "author": "Estev√£o Soares dos Santos",
   "license": "BSD-2-Clause",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "showdown": "1.1.0",
+    "showdown": "1.4.0",
     "chai": "^2.3.0",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
