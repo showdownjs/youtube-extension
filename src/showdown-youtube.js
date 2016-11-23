@@ -27,6 +27,7 @@
   }
 
 }(function (showdown) {
+  'use strict';
 
   var svg =
       '<div class="youtube-preview" style="width:%2; height:%3; background-color:#333; position:relative;">' +
