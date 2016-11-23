@@ -1,3 +1,9 @@
+<a name"1.2.0"></a>
+## 1.2.0 (2016-11-23)
+
+#### Fix
+* **output:** force HTTPS protocol in output
+
 <a name"1.1.0"></a>
 ## 1.1.0 (2016-06-21)
 

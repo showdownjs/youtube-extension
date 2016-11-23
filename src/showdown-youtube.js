@@ -27,6 +27,7 @@
   }
 
 }(function (showdown) {
+  'use strict';
 
   var svg =
       '<div class="youtube-preview" style="width:%2; height:%3; background-color:#333; position:relative;">' +
@@ -99,9 +100,9 @@
             var d = parseDimensions(rest, options),
               m, fUrl = '';
             if ((m = shortYoutubeRegex.exec(url)) || (m = fullYoutubeRegex.exec(url))) {
-              fUrl = '//www.youtube.com/embed/' + m[1] + '?rel=0';
+              fUrl = 'https://www.youtube.com/embed/' + m[1] + '?rel=0';
             } else if ((m = vimeoRegex.exec(url))) {
-              fUrl = '//player.vimeo.com/video/' + m[1];
+              fUrl = 'https://player.vimeo.com/video/' + m[1];
             } else {
               return match;
             }

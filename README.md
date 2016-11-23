@@ -5,7 +5,7 @@ Showdown's Youtube Extension
 
 ------
 
-**An extension to embed [Youtube](http://youtube.com/) videos in showdown documents using markdown syntax**
+**An extension to embed [Youtube](http://youtube.com/) e [Vimeo](http://www.vimeo.com/) videos in showdown documents using markdown syntax**
 
 ## Introduction
 
@@ -16,6 +16,7 @@ Basically it looks for urls that start with:
  - `http://www.youtube.com/watch?v=` or `youtube.com/watch?v=`
  - `http://www.youtube.com/embed/` or `youtube.com/embed/`
  - `http://youtu.be/` or `youtu.be/`
+ - `http://vimeo.com/`
 
 ## Installation
 
@@ -74,7 +75,7 @@ Since youtube extension uses the image syntax for videos, you can set the video 
 This should output the equivalent to:
 
 ```html
-<iframe width="800px" height="600px" src="//www.youtube.com/embed/dQw4w9WgXcQ?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe src="//www.youtube.com/embed/dQw4w9WgXcQ?rel=0" width="800px" height="600px" frameborder="0" allowfullscreen></iframe>
 ```
 
 You can also use units:

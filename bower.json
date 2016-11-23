@@ -1,6 +1,6 @@
 {
   "name": "showdown-youtube",
-  "description": "Embed YouTube videos within showdown",
+  "description": "Embed YouTube and Vimeo videos within showdown",
   "homepage": "https://github.com/showdownjs/youtube-extension",
   "license": "BSD-2-Clause",
   "authors": [
