@@ -53,14 +53,19 @@
     shortYoutubeRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/i,
     vimeoRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?vimeo.com\/(\d+)/;
 
-  function parseDimensions(rest) {
+  function parseDimensions(rest, options) {
     var width,
       height,
-      d;
+      d,
+      defaultWidth,
+      defaultHeight;
+
+    defaultWidth = options.youtubeWidth ? options.youtubeWidth : 420;
+    defaultHeight = options.youtubeHeight ? options.youtubeHeight : 315;
 
     if (rest) {
-      width = (d = /width="(.+?)"/.exec(rest)) ? d[1] : '420';
-      height = (d = /height="(.+?)"/.exec(rest)) ? d[1] : '315';
+      width = (d = /width="(.+?)"/.exec(rest)) ? d[1] : defaultWidth;
+      height = (d = /height="(.+?)"/.exec(rest)) ? d[1] : defaultHeight;
     }
 
     // add units so they can be used in css
@@ -92,7 +97,7 @@
             tag = (options.youtubeUseSimpleImg) ? img : svg;
           }
           return text.replace(imgRegex, function (match, url, rest) {
-            var d = parseDimensions(rest),
+            var d = parseDimensions(rest, options),
               m, fUrl = '';
             if ((m = shortYoutubeRegex.exec(url)) || (m = fullYoutubeRegex.exec(url))) {
               fUrl = 'https://www.youtube.com/embed/' + m[1] + '?rel=0';
