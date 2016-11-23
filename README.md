@@ -93,6 +93,14 @@ Youtube extension reads the options from Showdown Core. So, to pass an option, u
 [Showdown's documentation](https://github.com/showdownjs/showdown#setting-options).
 
 
+### youtubeHeight
+Sets the default height of the Youtube iframe.
+
+
+### youtubeWidth
+Sets the default width of the Youtube iframe.
+
+
 ### smoothLivePreview
 
 (borrowed from Showdown core)
