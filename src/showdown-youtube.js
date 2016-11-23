@@ -94,9 +94,9 @@
             var d = parseDimensions(rest),
               m, fUrl = '';
             if ((m = shortYoutubeRegex.exec(url)) || (m = fullYoutubeRegex.exec(url))) {
-              fUrl = '//www.youtube.com/embed/' + m[1] + '?rel=0';
+              fUrl = 'https://www.youtube.com/embed/' + m[1] + '?rel=0';
             } else if ((m = vimeoRegex.exec(url))) {
-              fUrl = '//player.vimeo.com/video/' + m[1];
+              fUrl = 'https://player.vimeo.com/video/' + m[1];
             } else {
               return match;
             }
