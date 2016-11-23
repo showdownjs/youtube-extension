@@ -87,12 +87,6 @@
     // Remove extra lines
     testCase.expected = testCase.expected.trim();
 
-    // Convert whitespace to a visible character so that it shows up on error reports
-    testCase.expected = testCase.expected.replace(/ /g, '·');
-    testCase.expected = testCase.expected.replace(/\n/g, '•\n');
-    testCase.actual = testCase.actual.replace(/ /g, '·');
-    testCase.actual = testCase.actual.replace(/\n/g, '•\n');
-
     return testCase;
 
   }
