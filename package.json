@@ -25,16 +25,16 @@
   "devDependencies": {
     "showdown": "1.5.0",
     "chai": "^1.10.0",
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "^0.6.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-conventional-changelog": "^4.0.0",
-    "grunt-conventional-github-releaser": "^0.3.0",
-    "grunt-endline": "^0.4.0",
-    "grunt-jscs": "^1.2.0",
-    "grunt-simple-mocha": "^0.4.0",
-    "grunt-stripcomments": "^0.3.1"
+    "grunt-endline": "^0.6.1",
+    "grunt-jscs": "^2.1.0",
+    "grunt-simple-mocha": "^0.4.1",
+    "grunt-stripcomments": "^0.6.0",
+    "load-grunt-tasks": "^3.5.2"
   }
 }
