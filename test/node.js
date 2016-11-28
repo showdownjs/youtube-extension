@@ -6,26 +6,40 @@
   require('../src/showdown-youtube.js');
 
   var fs = require('fs'),
-      converter = new showdown.Converter({extensions: ['youtube']}),
+      defaultConverter = new showdown.Converter({extensions: ['youtube']}),
+      optionsConverter = new showdown.Converter({
+        extensions: ['youtube'],
+        youtubeHeight: 400,
+        youtubeWidth: 400
+      }),
       cases = fs.readdirSync('test/cases/')
         .filter(filter())
         .map(map('test/cases/')),
       issues = fs.readdirSync('test/issues/')
         .filter(filter())
-        .map(map('test/issues/'));
+        .map(map('test/issues/')),
+      optionsCases = fs.readdirSync('test/optionsCases/')
+        .filter(filter())
+        .map(map('test/optionsCases/'));
 
   /////////////////////////////////////////////////////////////////////////////
   // Test cases
   //
   describe('Youtube Extension simple testcases', function () {
     for (var i = 0; i < cases.length; ++i) {
-      it(cases[i].name, assertion(cases[i]));
+      it(cases[i].name, assertion(cases[i], defaultConverter));
     }
   });
 
   describe('Youtube Extension issues testcases', function () {
     for (var i = 0; i < issues.length; ++i) {
-      it(issues[i].name, assertion(issues[i]));
+      it(issues[i].name, assertion(issues[i], defaultConverter));
+    }
+  });
+
+  describe('Youtube Extension converter options testcases', function () {
+    for (var i = 0; i < optionsCases.length; ++i) {
+      it(optionsCases[i].name, assertion(optionsCases[i], optionsConverter));
     }
   });
 
@@ -73,17 +87,11 @@
     // Remove extra lines
     testCase.expected = testCase.expected.trim();
 
-    // Convert whitespace to a visible character so that it shows up on error reports
-    testCase.expected = testCase.expected.replace(/ /g, '·');
-    testCase.expected = testCase.expected.replace(/\n/g, '•\n');
-    testCase.actual = testCase.actual.replace(/ /g, '·');
-    testCase.actual = testCase.actual.replace(/\n/g, '•\n');
-
     return testCase;
 
   }
 
-  function assertion(testCase) {
+  function assertion(testCase, converter) {
     return function () {
       testCase.actual = converter.makeHtml(testCase.input);
       testCase = normalize(testCase);

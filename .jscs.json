@@ -11,7 +11,6 @@
   ],
   "requireOperatorBeforeLineBreak": true,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
-  "validateIndentation": 2,
   "validateQuoteMarks": "'",
   "disallowMultipleLineStrings": true,
   "disallowMixedSpacesAndTabs": true,
@@ -81,10 +80,6 @@
   "disallowSpacesInsideObjectBrackets": "all",
   "disallowSpacesInsideArrayBrackets": "all",
   "disallowSpacesInsideParentheses": true,
-  "validateJSDoc": {
-    "checkParamNames": true,
-    "requireParamTypes": true
-  },
   "disallowMultipleLineBreaks": true,
   "disallowNewlineBeforeBlockStatements": true
 }
