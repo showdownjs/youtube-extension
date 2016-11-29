@@ -1,5 +1,4 @@
-/*! showdown-youtube 23-11-2016 */
-(function (extension) {
+/*! showdown-youtube 29-11-2016 */(function (extension) {
   'use strict';
 
   if (typeof showdown !== 'undefined') {
@@ -65,8 +64,7 @@
       height: height
     };
   }
-
-    showdown.extension('youtube', function () {
+  showdown.extension('youtube', function () {
     return [
       {
         type: 'output',
