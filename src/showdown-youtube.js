@@ -101,6 +101,9 @@
               m, fUrl = '';
             if ((m = shortYoutubeRegex.exec(url)) || (m = fullYoutubeRegex.exec(url))) {
               fUrl = 'https://www.youtube.com/embed/' + m[1] + '?rel=0';
+              if (options.youtubejsapi) {
+                fUrl += '&enablejsapi=1';
+              }
             } else if ((m = vimeoRegex.exec(url))) {
               fUrl = 'https://player.vimeo.com/video/' + m[1];
             } else {

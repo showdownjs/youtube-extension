@@ -1,8 +1,15 @@
+<a name="1.3.0"></a>
+## [1.3.0](https://github.com/showdownjs/youtbe-extension/compare/1.2.1...v1.3.0)
+
+#### Features
+* Allow YouTube configuration to include `enablejsapi=1` into the final URL, which enables the JS api for YouTube videos.
+  * [YouTube Docs](https://developers.google.com/youtube/player_parameters#enablejsapi)
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/showdownjs/youtbe-extension/compare/1.2.0...v1.2.1) (2016-11-29)
 
 #### Features
-* **defaultSizes:** allows a user to override the default height or width by passing in youtubeHeight or youtubeWidth 
+* **defaultSizes:** allows a user to override the default height or width by passing in youtubeHeight or youtubeWidth
     into showdown settings ([26b220a](https://github.com/showdownjs/youtube-extension/commit/26b220a663a5bd480141304976f42eba215da75a))
 
 

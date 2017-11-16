@@ -10,7 +10,8 @@
       optionsConverter = new showdown.Converter({
         extensions: ['youtube'],
         youtubeHeight: 400,
-        youtubeWidth: 400
+        youtubeWidth: 400,
+        youtubejsapi: true
       }),
       cases = fs.readdirSync('test/cases/')
         .filter(filter())
