@@ -51,7 +51,8 @@
     imgRegex = /(?:<p>)?<img.*?src="(.+?)"(.*?)\/?>(?:<\/p>)?/gi,
     fullYoutubeRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?youtube\.(?:.+?)\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9_-]{11})/i,
     shortYoutubeRegex = /(?:(?:https?:)?(?:\/\/)?)?youtu\.be\/([a-zA-Z0-9_-]{11})/i,
-    vimeoRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?vimeo.com\/(\d+)/;
+    vimeoRegex = /(?:(?:https?:)?(?:\/\/)?)(?:(?:www)?\.)?vimeo.com\/(\d+)/,
+    lbryRegex = /(?:(?:https?:)?(?:\/\/)?)?lbry.tv\/\@[a-zA-Z0-9\-_]+\:[a-zA-Z0-9]+\/([a-zA-Z0-9\-_]+)/;
 
   function parseDimensions(rest, options) {
     var width,
@@ -103,6 +104,8 @@
               fUrl = 'https://www.youtube.com/embed/' + m[1] + '?rel=0';
             } else if ((m = vimeoRegex.exec(url))) {
               fUrl = 'https://player.vimeo.com/video/' + m[1];
+            } else if ((m = lbryRegex.exec(url))) {
+              fUrl = 'https://lbry.tv/$/embed/' + m[1];
             } else {
               return match;
             }
