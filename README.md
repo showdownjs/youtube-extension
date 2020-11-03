@@ -5,7 +5,7 @@ Showdown's Youtube Extension
 
 ------
 
-**An extension to embed [Youtube](http://youtube.com/) e [Vimeo](http://www.vimeo.com/) videos in showdown documents using markdown syntax**
+**An extension to embed [Youtube](http://youtube.com/) e [Vimeo](http://www.vimeo.com/) [Lbry](https://lbry.tv) videos in showdown documents using markdown syntax**
 
 ## Introduction
 
@@ -17,6 +17,7 @@ Basically it looks for urls that start with:
  - `http://www.youtube.com/embed/` or `youtube.com/embed/`
  - `http://youtu.be/` or `youtu.be/`
  - `http://vimeo.com/`
+ - `http://lbry.tv/@User/`
 
 ## Installation
 
