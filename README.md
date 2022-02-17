@@ -5,7 +5,7 @@ Showdown's Youtube Extension
 
 ------
 
-**An extension to embed [Youtube](http://youtube.com/) e [Vimeo](http://www.vimeo.com/) videos in showdown documents using markdown syntax**
+**An extension to embed [Youtube](http://youtube.com/) and [Vimeo](http://www.vimeo.com/) videos in showdown documents using markdown syntax**
 
 ## Introduction
 
